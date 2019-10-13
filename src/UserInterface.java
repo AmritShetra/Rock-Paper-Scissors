@@ -49,7 +49,7 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		HBox buttons = new HBox(); //Will be used to contain the three buttons horizontally
 		VBox nodes = new VBox(); //Will be used to contain the HBox and the label below
 		
-		Image logo = new Image(getClass().getResourceAsStream("logo.png"));
+		Image logo = new Image(getClass().getResourceAsStream("res/logo.png"));
 		ImageView logoImage = new ImageView();
 		logoImage.setImage(logo);
 		
@@ -61,9 +61,9 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		instructionLabel.setLineSpacing(5);
 		instructionLabel.setFont(new Font(15)); //Adjusts font size
 		
-		Image rockImage = new Image(getClass().getResourceAsStream("rock.png"));
-		Image paperImage = new Image(getClass().getResourceAsStream("paper.png"));
-		Image scissorsImage = new Image(getClass().getResourceAsStream("scissors.png"));
+		Image rockImage = new Image(getClass().getResourceAsStream("res/rock.png"));
+		Image paperImage = new Image(getClass().getResourceAsStream("res/paper.png"));
+		Image scissorsImage = new Image(getClass().getResourceAsStream("res/scissors.png"));
 		rock.setGraphic(new ImageView(rockImage));
 		paper.setGraphic(new ImageView(paperImage));
 		scissors.setGraphic(new ImageView(scissorsImage));
@@ -149,13 +149,13 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		switch (Main.playerChoice)
 		{
 			case ("Rock"):
-				playerImage = new Image(getClass().getResourceAsStream("rock.png"));
+				playerImage = new Image(getClass().getResourceAsStream("res/rock.png"));
 				break;
 			case ("Paper"):
-				playerImage = new Image(getClass().getResourceAsStream("paper.png"));
+				playerImage = new Image(getClass().getResourceAsStream("res/paper.png"));
 				break;
 			case ("Scissors"):
-				playerImage = new Image(getClass().getResourceAsStream("scissors.png"));
+				playerImage = new Image(getClass().getResourceAsStream("res/scissors.png"));
 				break;
 			default:
 				break;
@@ -170,13 +170,13 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		switch (Main.computerChoice)
 		{
 			case ("Rock"):
-				computerImage = new Image(getClass().getResourceAsStream("rock.png"));
+				computerImage = new Image(getClass().getResourceAsStream("res/rock.png"));
 				break;
 			case ("Paper"):
-				computerImage = new Image(getClass().getResourceAsStream("paper.png"));
+				computerImage = new Image(getClass().getResourceAsStream("res/paper.png"));
 				break;
 			case ("Scissors"):
-				computerImage = new Image(getClass().getResourceAsStream("scissors.png"));
+				computerImage = new Image(getClass().getResourceAsStream("res/scissors.png"));
 				break;
 			default:
 				break;
