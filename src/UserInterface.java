@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -23,24 +22,24 @@ import javafx.stage.Stage;
 public class UserInterface extends Application implements EventHandler<ActionEvent>{
 	
 	private Stage window = new Stage();
-	private Scene mainScene, resultScene;
-	
-	final private Button rock = new Button("Rock"); 
+	private Scene mainScene;
+
+	final private Button rock = new Button("Rock");
 	final private Button paper = new Button("Paper");
 	final private Button scissors = new Button("Scissors");
 	final private Label winnerLabel = new Label("\n"+"\n"+"\n");
 	
-	int winCount;
-	int lossCount;
-	int drawCount;
+	private int winCount;
+	private int lossCount;
+	private int drawCount;
 	final private Button playAgain = new Button("Play Again");
 	
-	public static void main (String args[]) {
+	public static void main (String[] args) {
 		launch(args);
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		
 		window = primaryStage;
 		window.setTitle("Rock, Paper, Scissors");
@@ -91,32 +90,23 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 
 	@Override
 	public void handle(ActionEvent event) {
-		
-		if (event.getSource() == rock) //If button is "Rock"
-		{
-			Main.playerChoice = "Rock";
-		}
-		else if (event.getSource() == paper)
-		{
-			Main.playerChoice = "Paper";
-		}
-		else if (event.getSource() == scissors)
-		{
-			Main.playerChoice = "Scissors";
-		}
-		
-		Main.computerChoice(); //Determine computer's move
-		Main.winner(); //Determine winner
-		
-		results();
-		
+
 		if (event.getSource() == playAgain)
 		{
-			window.setScene(mainScene); //return to the start
+			window.setScene(mainScene); //Return to the start
 		}
+		else
+		{
+			Main.playerChoice = ((Button) event.getSource()).getText(); //Cast as button to get text, i.e. "Rock"
+			Main.computerChoice(); //Determine computer's move
+			Main.winner(); //Determine winner
+
+			results();
+		}
+
 	}
 	
-	public void results () {
+	private void results() {
 		
 		BorderPane resultLayout = new BorderPane(); //Secondary layout used to determine positions of results and chart
 		VBox yourResult = new VBox(); //Used to vertically align the label and your RPS choice
@@ -126,8 +116,8 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		youChoseLabel.setFont(new Font(15)); //Adjusts font size
 		Label computerChoseLabel = new Label("Computer chose:");
 		computerChoseLabel.setFont(new Font(15)); //Adjusts font size
-		
-		resultScene = new Scene (resultLayout, 800, 800);
+
+		Scene resultScene = new Scene(resultLayout, 800, 800);
 		
 		switch (Main.winner)
 		{
@@ -203,7 +193,7 @@ public class UserInterface extends Application implements EventHandler<ActionEve
 		playAgain.setOnAction(this);
 	}
 	
-	static void PieChart (int winCount, int drawCount, int lossCount, VBox winnerBox){
+	private static void PieChart(int winCount, int drawCount, int lossCount, VBox winnerBox){
 		
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
 				   new PieChart.Data("Win", winCount), 

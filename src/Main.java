@@ -2,18 +2,17 @@ import java.util.Random;
 
 public class Main {
 	
-	public static String playerChoice;
-	public static String computerChoice;
-	public static String winner;
+	static String playerChoice;
+	static String computerChoice;
+	static String winner;
 	
 	private static int randomNumber() 
 	{
 		Random rand = new Random();
-		int randomNumber = rand.nextInt(3) + 1; //starts from 0, so add 1
-		return randomNumber;
+		return rand.nextInt(3) + 1;
 	}
 	
-	public static void computerChoice()
+	static void computerChoice()
 	{
 		if (randomNumber() == 1)
 		{
@@ -29,13 +28,13 @@ public class Main {
 		}
 	}
 	
-	public static void winner()
+	static void winner()
 	{
-		if (playerChoice == "Rock" && computerChoice == "Paper" || playerChoice == "Paper" && computerChoice == "Scissors" || (playerChoice == "Scissors" && computerChoice == "Rock"))
+		if (playerChoice.equals("Rock") && computerChoice.equals("Paper") || playerChoice.equals("Paper") && computerChoice.equals("Scissors") || (playerChoice.equals("Scissors") && computerChoice.equals("Rock")))
 		{
 			winner = "Computer wins!";
 		}
-		else if (playerChoice == "Rock" && computerChoice == "Scissors" || (playerChoice == "Paper" && computerChoice == "Rock") || (playerChoice == "Scissors" && computerChoice == "Paper"))
+		else if (playerChoice.equals("Rock") && computerChoice.equals("Scissors") || (playerChoice.equals("Paper") && computerChoice.equals("Rock")) || (playerChoice.equals("Scissors") && computerChoice.equals("Paper")))
 		{
 			winner = "You win!";
 		}
